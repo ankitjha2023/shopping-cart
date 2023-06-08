@@ -6,6 +6,7 @@ import ProductDetails from './components/ProductDetails'
 import Cart from './components/Cart'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
+import Footer from './components/Footer'
 const App = () => {
 
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/productdetails/:id" element={<ProductDetails/>} />
       <Route path="/cart" element={<Cart/>}/>
      </Routes>
+     <Footer/>
     </BrowserRouter>
   )
 }

@@ -1,10 +1,43 @@
 import React from 'react'
+import CartItem from './CartItem'
 
 const Cart = () => {
+  const carts = JSON.parse(localStorage.getItem('cart')) || []
+
   return (
-    <div className='container-fluid py-3'>
-      <h1>Your Products</h1>
-    </div>
+    <section className='container-fluid py-3' id="cart-container">
+      <div className="d-flex justify-content-around align-items-center my-3">
+
+      <h3 className>Shopping Cart</h3>
+      <h3>{carts.length} items</h3>
+      
+      </div>
+      <hr />
+      <div className="row text-center justify-content-center align-items-center">
+        <div className="col-md-2">
+
+        </div>
+        <div className="col-md-2">
+          QUANTITY
+        </div>
+        <div className="col-md-2">
+          PRICE
+        </div>
+        <div className="col-md-2">
+          TOTAL
+        </div>
+        <div className="col-md-2">
+          Remove
+        </div>
+      </div>
+      <hr />
+     {
+      carts.length===0 ? <h2 className='text-center my-5'>Cart is empty</h2> : carts.map(cart=>{
+        return <CartItem key={cart.id} id={cart.id} image={cart.image} quantity={cart.quantity} price={cart.price}/>
+      })
+     }
+     
+    </section>
   )
 }
 

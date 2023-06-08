@@ -17,7 +17,7 @@ const Products = () => {
   },[])
    
   return (
-    <div className='container my-5'>
+    <section className='container my-5' id='products'>
         <div className="row">
             {
                  products.map((product)=>{
@@ -26,7 +26,7 @@ const Products = () => {
             }
         </div>
       
-    </div>
+    </section>
   )
 }
 
