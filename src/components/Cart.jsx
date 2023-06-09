@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CartItem from './CartItem'
 
 const Cart = () => {
+  const [total,setTotal] = useState(0)
   const carts = JSON.parse(localStorage.getItem('cart')) || []
+
+   useEffect(()=>{
+    const total = carts.reduce((acc,item)=>{
+      return acc+(item.price*item.quantity)
+    },0)
+    setTotal(total)
+   },[carts])
+  
 
   return (
     <section className='container-fluid py-3' id="cart-container">
@@ -10,7 +19,7 @@ const Cart = () => {
 
       <h3 className>Shopping Cart</h3>
       <h3>{carts.length} items</h3>
-      
+      <h5>Total Cost:{total}</h5>
       </div>
       <hr />
       <div className="row text-center justify-content-center align-items-center">
